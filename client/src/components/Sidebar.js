@@ -30,6 +30,8 @@ const Sidebar = () => {
         <Bookmark />
         <H2>Bookmarks</H2>
       </StyledLink1>
+
+      <Button>Meow</Button>
     </Div>
   );
 };
@@ -67,7 +69,7 @@ const StyledLink1 = styled(NavLink)`
   display: flex;
   text-decoration: none;
   padding: 15px;
-  border-radius: 30px;
+  border-radius: 40px;
   margin-top: 10px;
   width: 165px;
   color: black;
@@ -81,6 +83,15 @@ const StyledLink1 = styled(NavLink)`
   }
 `;
 
+const Button = styled.button`
+  border: none;
+  background-color: ${COLORS.primary};
+  color: white;
+  padding: 15px 20px;
+  font-size: 20px;
+  border-radius: 40px;
+  margin-top: 10px;
+`;
 const H2 = styled.h2`
   font-size: 23px;
   width: 10px;

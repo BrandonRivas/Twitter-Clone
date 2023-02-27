@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { CurrentUserContext } from "./CurrentUserContext";
 
 import HomeFeed from "./HomeFeed";
 import Notifications from "./Notifications";
@@ -11,6 +12,7 @@ import Sidebar from "./Sidebar";
 import GlobalStyles from "../GlobalStyles";
 
 const App = () => {
+  const { status } = useContext(CurrentUserContext);
   return (
     <BrowserRouter>
       <Main>

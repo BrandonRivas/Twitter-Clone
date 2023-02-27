@@ -4,5 +4,7 @@ export const COLORS = {
   secondary: "#EEE7FE",
   third: "#4F2AB4",
 
+  border: "#dddae3",
+
   // Add more colors as needed!
 };

@@ -10,6 +10,7 @@ import TweetDetails from "./TweetDetails";
 import Profile from "./Profile";
 import Sidebar from "./Sidebar";
 import GlobalStyles from "../GlobalStyles";
+import Spinner from "./Spinner";
 
 const App = () => {
   const { status } = useContext(CurrentUserContext);
@@ -18,7 +19,7 @@ const App = () => {
       <Main>
         <GlobalStyles />
         <Sidebar />
-        <Right>
+       
           <Routes>
             <Route path="/" element={<HomeFeed />} />
             <Route path="/notifications" element={<Notifications />} />
@@ -26,7 +27,7 @@ const App = () => {
             <Route path="/tweet/:tweetId" element={<TweetDetails />} />
             <Route path="/:profileId" element={<Profile />} />
           </Routes>
-        </Right>
+
       </Main>
     </BrowserRouter>
   );
@@ -35,9 +36,5 @@ const App = () => {
 const Main = styled.div`
   display: flex;
 `;
-const Right = styled.div`
-  display: flex;
-  flex-direction: column;
-  float: right;
-`;
+
 export default App;

@@ -39,9 +39,10 @@ const Div = styled.div`
   display: flex;
   flex-direction: column;
   height: 100vh;
-  width: 250px;
-  padding-left: 40px;
+  width: 350px;
+  padding-left: 100px;
   padding-top: 50px;
+  border-right: 2px solid ${COLORS.border};
 `;
 
 const LogoContainer = styled.div`
@@ -91,6 +92,7 @@ const Button = styled.button`
   font-size: 20px;
   border-radius: 40px;
   margin-top: 10px;
+  width: 200px;
 `;
 const H2 = styled.h2`
   font-size: 23px;

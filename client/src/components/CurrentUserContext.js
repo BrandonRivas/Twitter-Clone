@@ -10,7 +10,6 @@ export const UserProvider = ({ children }) => {
     fetch("/api/me/profile")
       .then((res) => res.json())
       .then((data) => {
-        console.log(data); //delete this later
         setCurrentUser(data.profile);
         setStatus("idle");
       })

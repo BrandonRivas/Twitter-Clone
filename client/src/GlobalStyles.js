@@ -1,15 +1,11 @@
 import { createGlobalStyle } from "styled-components";
 
 export default createGlobalStyle`
-    /* :root {
-       /* --primary-color: "hsl(258deg, 100%, 50%)"; */
-      /* --accent-bg-color: rgba(204, 85, 0, 0.1);
-      --page-horizontal-padding: 20px;
-      --header-height: 50px;
-      --max-content-width: 1200px;
-      --heading-font-family: 'Teko', sans-serif;
-      --user-img-width: 120px; 
-    } */
+     :root {
+
+      --max-content-width: 1000px;
+
+    } 
 
     html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,

@@ -23,7 +23,9 @@ const App = () => {
         {status === "error" ? (
           <Error />
         ) : status === "loading" ? (
-          <Spinner /> //center me please
+          <Div>
+            <Spinner />
+          </Div> //center me please
         ) : (
           <Routes>
             <Route path="/" element={<HomeFeed />} />
@@ -42,4 +44,10 @@ const Main = styled.div`
   display: flex;
 `;
 
+const Div = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: var(--max-content-width);
+`;
 export default App;

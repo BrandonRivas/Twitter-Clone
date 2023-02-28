@@ -15,23 +15,38 @@ const TweetActions = ({ numRetweets, numLikes }) => {
 
   return (
     <Div>
-      <FiMessageCircle />
+      <MessageCircle />
       <Button>
-        <FiRepeat />
+        <Repeat />
         {numRetweets}
       </Button>
+
       <Button onClick={handleClick}>
-        <Heart like={like} />
+        <Heart value={like} />
         {like ? numLikes + 1 : numLikes}
       </Button>
-      <FiShare />
+
+      <Share />
     </Div>
   );
 };
 
 const Heart = styled(FiHeart)`
-  color: ${(props) => (props.like ? "red" : "black")};
-  fill: ${(props) => (props.like ? "red" : "transparent")};
+  color: ${(props) => (props.value ? "red" : "black")};
+  fill: ${(props) => (props.value ? "red" : "transparent")};
+  font-size: 20px;
+`;
+
+const MessageCircle = styled(FiMessageCircle)`
+  font-size: 20px;
+`;
+
+const Repeat = styled(FiRepeat)`
+  font-size: 20px;
+`;
+
+const Share = styled(FiShare)`
+  font-size: 20px;
 `;
 const Div = styled.div`
   display: flex;

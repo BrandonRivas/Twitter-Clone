@@ -50,8 +50,9 @@ const HomeFeed = () => {
   );
 };
 const HoldMe = styled.div`
-  border-right: 2px solid ${COLORS.border};
+  border-right: 1px solid ${COLORS.border};
   width: var(--max-content-width);
+  border-left: 1px solid ${COLORS.border};
 `;
 
 const SpinnerContainer = styled.div`
@@ -62,13 +63,13 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   border-bottom: 5px solid ${COLORS.border};
-  border-top: 2px solid #dddae3;
 `;
 
 const H1 = styled.h2`
   font-size: 30px;
   font-weight: bold;
   padding: 20px;
+  border-bottom: 1px solid ${COLORS.border};
 `;
 
 export default HomeFeed;

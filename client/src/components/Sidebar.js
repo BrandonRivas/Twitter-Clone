@@ -38,7 +38,7 @@ const Sidebar = () => {
 const Div = styled.div`
   display: flex;
   flex-direction: column;
-  width: 350px;
+  width: 300px;
   padding-left: 100px;
   padding-top: 50px;
 `;

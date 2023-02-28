@@ -2,12 +2,17 @@ import React from "react";
 import { format } from "date-fns";
 import styled from "styled-components";
 import TweetActions from "./TweetActions";
+import { FiRepeat } from "react-icons/fi";
+import { COLORS } from "../Constants";
 
 const SmallTweet = ({ tweet }) => {
   return (
     <Wrapper>
       {tweet.retweetFrom ? (
-        <Retweet>{tweet.retweetFrom.displayName} Remeowed</Retweet>
+        <Retweet>
+          <Repeat />
+          {tweet.retweetFrom.displayName} Remeowed
+        </Retweet>
       ) : null}
       <Container>
         <div>
@@ -36,6 +41,7 @@ const SmallTweet = ({ tweet }) => {
 
 const Wrapper = styled.div`
   padding-top: 15px;
+  border-bottom: 2px solid ${COLORS.border};
 `;
 
 const Container = styled.div`
@@ -46,8 +52,13 @@ const Retweet = styled.p`
   padding: 20px 40px;
   color: gray;
   font-weight: bold;
+  display: flex;
+  align-items: center;
 `;
 
+const Repeat = styled(FiRepeat)`
+  padding-right: 10px;
+`;
 const Img = styled.img`
   width: 50px;
   height: 50px;
@@ -67,6 +78,8 @@ const ImgTweet = styled.img`
 const TweetText = styled.p`
   padding-top: 10px;
   padding-bottom: 10px;
+  width: 800px;
+  line-height: 1.5;
 `;
 
 export default SmallTweet;

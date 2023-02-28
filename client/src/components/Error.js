@@ -19,7 +19,7 @@ const ErrorDiv = styled.div`
   flex-direction: column;
   padding-top: 200px;
   align-items: center;
-  border-right: 2px solid ${COLORS.border};
+  /* border-right: 2px solid ${COLORS.border}; */
   width: var(--max-content-width);
 `;
 const Bomb = styled(FaBomb)`

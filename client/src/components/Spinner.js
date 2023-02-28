@@ -20,6 +20,7 @@ const Ripple = styled.div`
 
   div {
     position: absolute;
+    display: flex;
     border: 4px solid #4c00ff;
     opacity: 1;
     border-radius: 50%;

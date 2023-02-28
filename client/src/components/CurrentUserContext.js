@@ -15,6 +15,7 @@ export const UserProvider = ({ children }) => {
       })
       .catch((error) => {
         console.log(error);
+        setStatus("error");
       });
   }, []);
   return (

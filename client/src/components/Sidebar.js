@@ -38,11 +38,9 @@ const Sidebar = () => {
 const Div = styled.div`
   display: flex;
   flex-direction: column;
-  height: 100vh;
   width: 350px;
   padding-left: 100px;
   padding-top: 50px;
-  border-right: 2px solid ${COLORS.border};
 `;
 
 const LogoContainer = styled.div`

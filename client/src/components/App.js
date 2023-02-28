@@ -11,6 +11,7 @@ import Profile from "./Profile";
 import Sidebar from "./Sidebar";
 import GlobalStyles from "../GlobalStyles";
 import Spinner from "./Spinner";
+import Error from "./Error";
 
 const App = () => {
   const { status } = useContext(CurrentUserContext);
@@ -19,7 +20,11 @@ const App = () => {
       <Main>
         <GlobalStyles />
         <Sidebar />
-       
+        {status === "error" ? (
+          <Error />
+        ) : status === "loading" ? (
+          <Spinner /> //center me please
+        ) : (
           <Routes>
             <Route path="/" element={<HomeFeed />} />
             <Route path="/notifications" element={<Notifications />} />
@@ -27,7 +32,7 @@ const App = () => {
             <Route path="/tweet/:tweetId" element={<TweetDetails />} />
             <Route path="/:profileId" element={<Profile />} />
           </Routes>
-
+        )}
       </Main>
     </BrowserRouter>
   );

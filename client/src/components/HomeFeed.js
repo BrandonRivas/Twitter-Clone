@@ -1,15 +1,20 @@
-import React from "react";
 import styled from "styled-components";
-import { useState, useEffect } from "react";
+import React, {useState, useEffect } from "react";
 import Spinner from "./Spinner";
 import { COLORS } from "../Constants";
 import Error from "./Error";
 import TweetContainerInput from "./TweetContainerInput";
 import SmallTweet from "./SmallTweet";
 
+
+
+
 const HomeFeed = () => {
   const [content, setContent] = useState({});
   const [status, setStatus] = useState("loading");
+ 
+  const [tweeted, setTweeted] = useState(false)
+
 
   useEffect(() => {
     fetch("/api/me/home-feed")
@@ -17,19 +22,20 @@ const HomeFeed = () => {
       .then((data) => {
         setContent(data);
         setStatus("idle");
+        
       })
       .catch((error) => {
         console.log(error);
         setStatus("error");
       });
-  }, [setContent, setStatus]);
+  }, [setContent, setStatus, tweeted]);
 
   return (
     <HoldMe>
       <>
         <H1>Home</H1>
         <Wrapper>
-          <TweetContainerInput />
+          <TweetContainerInput tweeted={setTweeted} txt={tweeted} />
         </Wrapper>
         {status === "error" ? (
           <Error />

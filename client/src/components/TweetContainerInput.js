@@ -3,14 +3,38 @@ import { CurrentUserContext } from "./CurrentUserContext";
 import { COLORS } from "../Constants";
 import styled from "styled-components";
 
-const TweetContainerInput = () => {
+const TweetContainerInput = ({ tweeted, txt }) => {
   const { currentUser } = useContext(CurrentUserContext);
   const [text, setText] = useState("");
   const [characterLimit, setCharacterLimit] = useState(280);
+  const [isLoading, setIsLoading] = useState(false);
+
   const handleChange = (event) => {
     const input = event.target.value;
     setText(event.target.value);
     setCharacterLimit(280 - input.length);
+  };
+
+  const handleSubmit = () => {
+    setIsLoading(true);
+    fetch("/api/tweet", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ status: text }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setText(data.tweet);
+        tweeted(!txt);
+        setText("");
+        setIsLoading(false);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   return (
@@ -31,10 +55,12 @@ const TweetContainerInput = () => {
       <ButtonContainer>
         <P value={characterLimit}>{characterLimit}</P>
         <Button2
+          onClick={handleSubmit}
           value={characterLimit}
+          isLoading={isLoading}
           disabled={characterLimit < 0 || characterLimit === 280}
         >
-          Meow
+          {isLoading ? "Meowing" : "Meow"}
         </Button2>
       </ButtonContainer>
     </>
@@ -67,8 +93,10 @@ const P = styled.p`
 `;
 const Button2 = styled.button`
   font-size: 18px;
-  background-color: ${({ value }) =>
-    value < 0 ? `${COLORS.secondary}` : `${COLORS.primary}`};
+  background-color: ${({ value, isLoading }) =>
+    value < 0 || value === 280 || isLoading
+      ? `${COLORS.secondary}`
+      : `${COLORS.primary}`};
   border: none;
   color: white;
   padding: 10px 20px;

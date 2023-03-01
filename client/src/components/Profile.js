@@ -42,7 +42,7 @@ const Profile = () => {
   }, [profileId, setFeed, setFeedStatus]);
   const follow = profile?.isFollowingYou;
   const following = profile?.isBeingFollowedByYou;
-  console.log(profile);
+
   return (
     <Wrapper>
       {status === "error" ? (

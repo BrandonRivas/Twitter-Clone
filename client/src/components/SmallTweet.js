@@ -5,11 +5,17 @@ import TweetActions from "./TweetActions";
 import { FiRepeat } from "react-icons/fi";
 import { COLORS } from "../Constants";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 const SmallTweet = ({ tweet }) => {
+  const navigate = useNavigate();
+
+  const handleClick = (event) => {
+    event.preventDefault();
+    navigate(`/${tweet.author.handle}`);
+  };
   return (
-    //this needs to be fixed aka the links
-    // <Link to={`/tweet/${tweet.id}`}>
-      <Wrapper>
+    <Wrapper>
+      <Link1 to={`/tweet/${tweet.id}`}>
         {tweet.retweetFrom ? (
           <Retweet>
             <Repeat />
@@ -18,33 +24,35 @@ const SmallTweet = ({ tweet }) => {
         ) : null}
         <Container>
           <div>
-            <Links to={`/${tweet.author.handle}`}>
+            <div onClick={handleClick}>
               <Img
                 src={tweet.author.avatarSrc}
                 alt={`${tweet.author.handle} profile picture`}
               />
-            </Links>
+            </div>
           </div>
           <div>
-            <Links to={`/${tweet.author.handle}`}>
-              <Bold>{tweet.author.displayName}</Bold>{" "}
-            </Links>
-            <Links to={`/${tweet.author.handle}`}>
-              <span>@{tweet.author.handle}</span>
-            </Links>
-            <span> • </span>
-            <span>{format(new Date(tweet.timestamp), "MMM d")}</span>
+            <UserInfo>
+              <div onClick={handleClick}>
+                <Bold>{tweet.author.displayName}</Bold>{" "}
+              </div>
+              <div onClick={handleClick}>
+                <span>@{tweet.author.handle}</span>
+              </div>
+              <span> • </span>
+              <span>{format(new Date(tweet.timestamp), "MMM d")}</span>
+            </UserInfo>
             <TweetText>{tweet.status}</TweetText>
             {tweet.media.map((m) => {
               return <ImgTweet key={m.url} src={m.url} />;
             })}
-            <TweetActions
-              numLikes={tweet.numLikes}
-            />
           </div>
         </Container>
-      </Wrapper>
-    // </Link>
+      </Link1>
+      <ActionDiv>
+        <TweetActions numLikes={tweet.numLikes} />
+      </ActionDiv>
+    </Wrapper>
   );
 };
 
@@ -91,9 +99,19 @@ const TweetText = styled.p`
   line-height: 1.5;
 `;
 
-const Links = styled(Link)`
+const Link1 = styled(Link)`
   text-decoration: none;
   color: black;
 `;
 
+const ActionDiv = styled.div`
+  padding-left: 70px;
+`;
+
+const UserInfo = styled.div`
+  display: flex;
+  & > * {
+    padding-right: 2px;
+  }
+`;
 export default SmallTweet;

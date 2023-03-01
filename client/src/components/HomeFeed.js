@@ -41,6 +41,7 @@ const HomeFeed = () => {
           <div>
             {content.tweetIds.map((tweetId) => {
               const tweet = content.tweetsById[tweetId];
+
               return <SmallTweet tweet={tweet} key={tweet.id} />;
             })}
           </div>

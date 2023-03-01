@@ -68,7 +68,7 @@ const P = styled.p`
 const Button2 = styled.button`
   font-size: 18px;
   background-color: ${({ value }) =>
-    value < 0 ? "rgba(76, 0, 255, 0.36)" : `${COLORS.primary}`};
+    value < 0 ? `${COLORS.secondary}` : `${COLORS.primary}`};
   border: none;
   color: white;
   padding: 10px 20px;

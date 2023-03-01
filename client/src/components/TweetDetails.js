@@ -29,9 +29,9 @@ const TweetDetails = () => {
   return (
     <Wrapper>
       <NavContainer>
-        <Link to="/">
+        <Links to="/">
           <ArrowLeft />
-        </Link>
+        </Links>
         <H2>Meow</H2>
       </NavContainer>
       {status === "error" ? (
@@ -43,13 +43,19 @@ const TweetDetails = () => {
       ) : (
         <BigTweet>
           <HandleContainer>
-            <ImgProfile
-              src={tweet.author.avatarSrc}
-              alt={`${tweet.author.avatarSrc} profile picture`}
-            />
+            <Links to={`/${tweet.author.handle}`}>
+              <ImgProfile
+                src={tweet.author.avatarSrc}
+                alt={`${tweet.author.avatarSrc} profile picture`}
+              />
+            </Links>
             <UserInfo>
-              <Name>{tweet.author.displayName}</Name>{" "}
-              <Handle>@{tweet.author.handle}</Handle>
+              <Links to={`/${tweet.author.handle}`}>
+                <Name>{tweet.author.displayName}</Name>
+              </Links>{" "}
+              <Links to={`/${tweet.author.handle}`}>
+                <Handle>@{tweet.author.handle}</Handle>
+              </Links>
             </UserInfo>
           </HandleContainer>
           <div>
@@ -137,5 +143,10 @@ const SpinnerContainer = styled.div`
 const TimeInfo = styled.div`
   margin-top: 10px;
   color: #666464;
+`;
+
+const Links = styled(Link)`
+  text-decoration: none;
+  color: black;
 `;
 export default TweetDetails;

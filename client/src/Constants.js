@@ -1,10 +1,7 @@
 export const COLORS = {
-  // Bright purple:
   primary: "hsl(258deg, 100%, 50%)",
-  secondary: "#EEE7FE",
-  third: "#4F2AB4",
+  secondary: "rgba(76, 0, 255, 0.36)",
 
   border: "#dddae3",
 
-  // Add more colors as needed!
 };

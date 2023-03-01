@@ -41,8 +41,8 @@ const Profile = () => {
       });
   }, [profileId, setFeed, setFeedStatus]);
   const follow = profile?.isFollowingYou;
-
-
+  const following = profile?.isBeingFollowedByYou;
+  console.log(profile);
   return (
     <Wrapper>
       {status === "error" ? (
@@ -59,8 +59,8 @@ const Profile = () => {
               src={profile.avatarSrc}
               alt={`${profile.avatarSrc} profile picture`}
             />
-            {/* ask about the button and prevent defualt */}
-            <Button>Following</Button>
+            {following ? <Button>Following</Button> : null}
+
             <DisplayName>{profile.displayName}</DisplayName>
             <HandleContainer>
               <Handle>@{profile.handle}</Handle>

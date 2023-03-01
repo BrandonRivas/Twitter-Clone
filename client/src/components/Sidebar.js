@@ -62,7 +62,7 @@ const StyledLink = styled(NavLink)`
   color: black;
 
   &:hover {
-    background-color: rgba(76, 0, 255, 0.36);
+    background-color: ${COLORS.secondary};
     color: ${COLORS.primary};
   }
   &.active {
@@ -80,7 +80,7 @@ const StyledLink1 = styled(NavLink)`
   color: black;
 
   &:hover {
-    background-color: rgba(76, 0, 255, 0.36);
+    background-color: ${COLORS.secondary};
     color: ${COLORS.primary};
   }
   &.active {

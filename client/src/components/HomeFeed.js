@@ -1,3 +1,4 @@
+import React from "react";
 import styled from "styled-components";
 import { useState, useEffect } from "react";
 import Spinner from "./Spinner";
@@ -16,13 +17,12 @@ const HomeFeed = () => {
       .then((data) => {
         setContent(data);
         setStatus("idle");
-        console.log(data);
       })
       .catch((error) => {
         console.log(error);
         setStatus("error");
       });
-  }, []);
+  }, [setContent, setStatus]);
 
   return (
     <HoldMe>
@@ -65,7 +65,7 @@ const Wrapper = styled.div`
   border-bottom: 5px solid ${COLORS.border};
 `;
 
-const H1 = styled.h2`
+const H1 = styled.h1`
   font-size: 30px;
   font-weight: bold;
   padding: 20px;

@@ -30,7 +30,10 @@ const TweetContainerInput = () => {
       </TweetContainer>
       <ButtonContainer>
         <P value={characterLimit}>{characterLimit}</P>
-        <Button2 value={characterLimit} disabled={characterLimit < 0}>
+        <Button2
+          value={characterLimit}
+          disabled={characterLimit < 0 || characterLimit === 280}
+        >
           Meow
         </Button2>
       </ButtonContainer>

@@ -1,10 +1,16 @@
+import React from "react";
 import Logo from "./Logo";
 import styled from "styled-components";
 import { COLORS } from "../Constants";
 import { FiHome, FiUser, FiBell, FiBookmark } from "react-icons/fi";
 import { NavLink } from "react-router-dom";
+import { CurrentUserContext } from "./CurrentUserContext";
+import { useContext } from "react";
+
 
 const Sidebar = () => {
+  const { currentUser } = useContext(CurrentUserContext);
+
   return (
     <Div>
       <LogoContainer>
@@ -16,7 +22,7 @@ const Sidebar = () => {
         <H2>Home</H2>
       </StyledLink>
 
-      <StyledLink to="/:profileId">
+      <StyledLink to={currentUser ? `/${currentUser.handle}` : undefined}>
         <User />
         <H2>User</H2>
       </StyledLink>

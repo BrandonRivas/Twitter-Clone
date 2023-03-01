@@ -4,38 +4,47 @@ import styled from "styled-components";
 import TweetActions from "./TweetActions";
 import { FiRepeat } from "react-icons/fi";
 import { COLORS } from "../Constants";
-
+import { Link } from "react-router-dom";
 const SmallTweet = ({ tweet }) => {
   return (
-    <Wrapper>
-      {tweet.retweetFrom ? (
-        <Retweet>
-          <Repeat />
-          {tweet.retweetFrom.displayName} Remeowed
-        </Retweet>
-      ) : null}
-      <Container>
-        <div>
-          <Img
-            src={tweet.author.avatarSrc}
-            alt={`${tweet.author.handle} profile picture`}
-          />
-        </div>
-        <div>
-          <Bold>{tweet.author.displayName}</Bold>{" "}
-          <span>@{tweet.author.handle}</span> <span>•</span>{" "}
-          <span>{format(new Date(tweet.timestamp), "MMM d")}</span>
-          <TweetText>{tweet.status}</TweetText>
-          {tweet.media.map((m) => {
-            return <ImgTweet key={m.url} src={m.url} />;
-          })}
-          <TweetActions
-            numRetweets={tweet.numRetweets}
-            numLikes={tweet.numLikes}
-          />
-        </div>
-      </Container>
-    </Wrapper>
+    <Link to={`/tweet/${tweet.id}`}>
+      <Wrapper>
+        {tweet.retweetFrom ? (
+          <Retweet>
+            <Repeat />
+            {tweet.retweetFrom.displayName} Remeowed
+          </Retweet>
+        ) : null}
+        <Container>
+          <div>
+            <Links to={`/${tweet.author.handle}`}>
+              <Img
+                src={tweet.author.avatarSrc}
+                alt={`${tweet.author.handle} profile picture`}
+              />
+            </Links>
+          </div>
+          <div>
+            <Links to={`/${tweet.author.handle}`}>
+              <Bold>{tweet.author.displayName}</Bold>{" "}
+            </Links>
+            <Links to={`/${tweet.author.handle}`}>
+              <span>@{tweet.author.handle}</span>
+            </Links>
+            <span> • </span>
+            <span>{format(new Date(tweet.timestamp), "MMM d")}</span>
+            <TweetText>{tweet.status}</TweetText>
+            {tweet.media.map((m) => {
+              return <ImgTweet key={m.url} src={m.url} />;
+            })}
+            <TweetActions
+              numRetweets={tweet.numRetweets}
+              numLikes={tweet.numLikes}
+            />
+          </div>
+        </Container>
+      </Wrapper>
+    // </Link>
   );
 };
 
@@ -80,6 +89,11 @@ const TweetText = styled.p`
   padding-bottom: 10px;
   width: 800px;
   line-height: 1.5;
+`;
+
+const Links = styled(Link)`
+  text-decoration: none;
+  color: black;
 `;
 
 export default SmallTweet;

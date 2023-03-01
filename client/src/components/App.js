@@ -25,7 +25,7 @@ const App = () => {
         ) : status === "loading" ? (
           <Div>
             <Spinner />
-          </Div> //center me please
+          </Div>
         ) : (
           <Routes>
             <Route path="/" element={<HomeFeed />} />

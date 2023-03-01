@@ -1,6 +1,7 @@
+import React from "react";
 import styled from "styled-components";
 import { FaBomb } from "react-icons/fa";
-import { COLORS } from "../Constants";
+
 const Error = () => {
   return (
     <ErrorDiv>
@@ -19,7 +20,6 @@ const ErrorDiv = styled.div`
   flex-direction: column;
   padding-top: 200px;
   align-items: center;
-  /* border-right: 2px solid ${COLORS.border}; */
   width: var(--max-content-width);
 `;
 const Bomb = styled(FaBomb)`

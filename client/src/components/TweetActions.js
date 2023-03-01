@@ -5,7 +5,8 @@ import { FiMessageCircle, FiRepeat, FiHeart, FiShare } from "react-icons/fi";
 const TweetActions = ({ numRetweets, numLikes }) => {
   const [like, setLike] = useState(false);
 
-  const handleClick = () => {
+  const handleClick = (event) => {
+    event.preventDefault();
     if (like) {
       setLike(false);
     } else {
@@ -16,16 +17,13 @@ const TweetActions = ({ numRetweets, numLikes }) => {
   return (
     <Div>
       <MessageCircle />
-      <Button>
-        <Repeat />
-        {numRetweets}
-      </Button>
-
-      <Button onClick={handleClick}>
+      <Repeat />
+      <Button onClick={(event) => handleClick(event)}>
         <Heart value={like} />
-        {like ? numLikes + 1 : numLikes}
+        <span style={{ color: like ? "black" : "transparent" }}>
+          {like ? numLikes + 1 : numLikes}
+        </span>
       </Button>
-
       <Share />
     </Div>
   );

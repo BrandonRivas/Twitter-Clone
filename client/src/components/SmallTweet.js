@@ -7,7 +7,8 @@ import { COLORS } from "../Constants";
 import { Link } from "react-router-dom";
 const SmallTweet = ({ tweet }) => {
   return (
-    <Link to={`/tweet/${tweet.id}`}>
+    //this needs to be fixed aka the links
+    // <Link to={`/tweet/${tweet.id}`}>
       <Wrapper>
         {tweet.retweetFrom ? (
           <Retweet>
@@ -38,7 +39,6 @@ const SmallTweet = ({ tweet }) => {
               return <ImgTweet key={m.url} src={m.url} />;
             })}
             <TweetActions
-              numRetweets={tweet.numRetweets}
               numLikes={tweet.numLikes}
             />
           </div>

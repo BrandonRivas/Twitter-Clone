@@ -50,9 +50,9 @@ const HomeFeed = () => {
   );
 };
 const HoldMe = styled.div`
-  border-right: 1px solid ${COLORS.border};
+  border-right: 2px solid ${COLORS.border};
   width: var(--max-content-width);
-  border-left: 1px solid ${COLORS.border};
+  border-left: 2px solid ${COLORS.border};
 `;
 
 const SpinnerContainer = styled.div`
@@ -69,7 +69,7 @@ const H1 = styled.h1`
   font-size: 30px;
   font-weight: bold;
   padding: 20px;
-  border-bottom: 1px solid ${COLORS.border};
+  border-bottom: 2px solid ${COLORS.border};
 `;
 
 export default HomeFeed;

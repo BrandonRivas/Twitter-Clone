@@ -6,6 +6,7 @@ import styled from "styled-components";
 import { COLORS } from "../Constants";
 import Error from "./Error";
 import Spinner from "./Spinner";
+import { format } from "date-fns";
 
 const TweetDetails = () => {
   const { tweetId } = useParams();
@@ -47,19 +48,24 @@ const TweetDetails = () => {
               alt={`${tweet.author.avatarSrc} profile picture`}
             />
             <UserInfo>
-              <Name></Name> <Handle>@giantcat9</Handle>
+              <Name>{tweet.author.displayName}</Name>{" "}
+              <Handle>@{tweet.author.handle}</Handle>
             </UserInfo>
           </HandleContainer>
           <div>
-            <TweetContent>JAS 39 Gripen</TweetContent>
-            <ImgContent src="/Pictures/giant-cat-running.jpg" alt="" />
-            <div>
-              <span>12:27 Pm</span> <span>•</span> <span>Jan 12 2020</span>{" "}
+            <TweetContent>{tweet.status}</TweetContent>
+            {tweet.media.map((m) => {
+              return <ImgContent key={m.url} src={m.url} />;
+            })}
+
+            <TimeInfo>
+              <span>{format(new Date(tweet.timestamp), "p")}</span>{" "}
+              <span>•</span>{" "}
+              <span>{format(new Date(tweet.timestamp), "MMM d yyyy")} </span>
               <span>•</span> <span>Critter web app</span>
-            </div>
+            </TimeInfo>
           </div>
-          {/* I need to pass numtweets onto this */}
-          <TweetActions />
+          <TweetActions numLikes={tweet.numLikes} />
         </BigTweet>
       )}
     </Wrapper>
@@ -67,12 +73,12 @@ const TweetDetails = () => {
 };
 
 const Wrapper = styled.div`
-  border-right: 1px solid ${COLORS.border};
+  border-right: 2px solid ${COLORS.border};
   width: var(--max-content-width);
-  border-left: 1px solid ${COLORS.border};
+  border-left: 2px solid ${COLORS.border};
 `;
 const NavContainer = styled.div`
-  border-bottom: 1px solid ${COLORS.border};
+  border-bottom: 2px solid ${COLORS.border};
   display: flex;
   align-items: center;
   padding-left: 20px;
@@ -84,7 +90,7 @@ const ArrowLeft = styled(FiArrowLeft)`
 `;
 const BigTweet = styled.div`
   padding-left: 70px;
-  border-bottom: 1px solid ${COLORS.border};
+  border-bottom: 2px solid ${COLORS.border};
 `;
 
 const H2 = styled.h2`
@@ -126,5 +132,10 @@ const ImgContent = styled.img`
 const SpinnerContainer = styled.div`
   display: flex;
   justify-content: center;
+`;
+
+const TimeInfo = styled.div`
+  margin-top: 10px;
+  color: #666464;
 `;
 export default TweetDetails;

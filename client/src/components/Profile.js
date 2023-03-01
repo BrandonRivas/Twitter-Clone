@@ -42,7 +42,7 @@ const Profile = () => {
   }, [profileId, setFeed, setFeedStatus]);
   const follow = profile?.isFollowingYou;
 
-  console.log(profile);
+
   return (
     <Wrapper>
       {status === "error" ? (
@@ -60,7 +60,7 @@ const Profile = () => {
               alt={`${profile.avatarSrc} profile picture`}
             />
             {/* ask about the button and prevent defualt */}
-            <Button>Following</Button> 
+            <Button>Following</Button>
             <DisplayName>{profile.displayName}</DisplayName>
             <HandleContainer>
               <Handle>@{profile.handle}</Handle>
@@ -92,6 +92,11 @@ const Profile = () => {
               </span>
             </FollowerInfo>
           </BioContainer>
+          <TabDiv>
+            <TweetTab>Tweets</TweetTab>
+            <MediaTab>Media</MediaTab>
+            <LikesTab>Likes</LikesTab>
+          </TabDiv>
         </>
       )}
 
@@ -114,14 +119,13 @@ const Profile = () => {
 };
 
 const Wrapper = styled.div`
-  border-right: 1px solid ${COLORS.border};
+  border-right: 2px solid ${COLORS.border};
   width: var(--max-content-width);
-  border-left: 1px solid ${COLORS.border};
+  border-left: 2px solid ${COLORS.border};
 `;
 
 const BioContainer = styled.div`
-  padding: 20px;
-  border-bottom: 1px solid ${COLORS.border};
+  padding: 20px 20px 0 20px;
 `;
 
 const Banner = styled.div`
@@ -204,5 +208,37 @@ const Button = styled.button`
   width: 200px;
   position: absolute;
   margin-left: 500px;
+`;
+const TabDiv = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+  font-size: 18px;
+`;
+
+const TweetTab = styled.div`
+  color: ${COLORS.primary};
+  font-weight: bold;
+  border-bottom: 3px solid ${COLORS.primary};
+  width: 33.3%;
+  display: flex;
+  justify-content: center;
+  padding-bottom: 20px;
+`;
+
+const MediaTab = styled.div`
+  width: 33.3%;
+  border-bottom: 2px solid ${COLORS.border};
+  display: flex;
+  justify-content: center;
+  padding-bottom: 20px;
+`;
+
+const LikesTab = styled.div`
+  width: 33.3%;
+  border-bottom: 2px solid ${COLORS.border};
+  display: flex;
+  justify-content: center;
+  padding-bottom: 20px;
 `;
 export default Profile;

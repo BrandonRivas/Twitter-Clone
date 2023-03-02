@@ -40,6 +40,8 @@ const Profile = () => {
         setFeedStatus("error");
       });
   }, [profileId, setFeed, setFeedStatus]);
+
+
   const follow = profile?.isFollowingYou;
   const following = profile?.isBeingFollowedByYou;
 

@@ -31,6 +31,7 @@ const TweetContainerInput = ({ tweeted, txt }) => {
         tweeted(!txt);
         setText("");
         setIsLoading(false);
+        setCharacterLimit(280);
       })
       .catch((error) => {
         console.log(error);

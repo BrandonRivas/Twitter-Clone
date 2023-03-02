@@ -6,15 +6,12 @@ import Error from "./Error";
 import TweetContainerInput from "./TweetContainerInput";
 import SmallTweet from "./SmallTweet";
 
-
-
-
 const HomeFeed = () => {
   const [content, setContent] = useState({});
   const [status, setStatus] = useState("loading");
  
-  const [tweeted, setTweeted] = useState(false)
-
+ 
+ const [tweeted, setTweeted] = useState(false)
 
   useEffect(() => {
     fetch("/api/me/home-feed")
@@ -30,6 +27,7 @@ const HomeFeed = () => {
       });
   }, [setContent, setStatus, tweeted]);
 
+ 
   return (
     <HoldMe>
       <>
@@ -47,7 +45,6 @@ const HomeFeed = () => {
           <div>
             {content.tweetIds.map((tweetId) => {
               const tweet = content.tweetsById[tweetId];
-
               return <SmallTweet tweet={tweet} key={tweet.id} />;
             })}
           </div>
